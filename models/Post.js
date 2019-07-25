@@ -2,14 +2,21 @@ const db = require('../data/dbConfig');
 
 module.exports = {
     async get(id = null) {
-        return null;
+        if (id) {
+            const post = await db('posts').where({ id }).first();
+            return post;
+        }
+        const posts = await db('posts');
+        return new Array(...posts);
     },
 
-    async add(post) {
-        return null;
+    async insert(post) {
+        const [id] = await db('posts').insert(post);
+        return this.get(id);
     },
 
     async remove(id) {
-        return null;
+        const count = await db('posts').where('id', id).del();
+        return count;
     }
 }
