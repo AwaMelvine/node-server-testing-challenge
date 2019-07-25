@@ -9,7 +9,7 @@ module.exports = {
         return null;
     },
 
-    async delete(id) {
+    async remove(id) {
         return null;
     }
 }
