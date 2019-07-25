@@ -1,6 +1,10 @@
 const db = require('../data/dbConfig');
 const Post = require('../models/Post');
 
+beforeEach(async () => {
+    await db('posts').truncate();
+});
+
 describe('Post Model', () => {
     describe('get()', () => {
         it('returns json ', () => {
